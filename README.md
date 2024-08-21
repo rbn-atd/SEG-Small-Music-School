@@ -1,5 +1,7 @@
 # Team *<enter team name here>* Small Group project
 
+# SETTINGS.PY IS OMITTED TO KEEP SECRET KEY PRIVATE
+
 ## Team members
 The members of the team are:
 - Tom Hurford
