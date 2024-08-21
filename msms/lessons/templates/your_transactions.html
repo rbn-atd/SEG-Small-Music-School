@@ -1,0 +1,35 @@
+{% extends 'nav.html' %}
+{% block main %}
+  {%load static %}
+  <!-- Link to CSS file-->
+  <link rel="stylesheet" href="{% static 'user_request.css' %}">
+    <head>
+        <title>Music Booking</title>
+    </head>
+    <div class="container p-5 my-5 border">    
+      <div style="overflow-x:auto;">
+        <h1>Your transactions</h1>
+        <table>
+          <tr>
+            <th>Amount owed</th>
+            <th>Invoice Posted</th>
+          </tr>
+                {%for i in invoices%}
+                    <tr>
+                      <td style ='text-align: left; vertical-align: middle'>£{{i.cost}}</td>
+                      <td style ='text-align: left; vertical-align: middle'>{{i.date}}</td>
+                    </tr>
+                {%endfor%}
+          <tr>
+            <th><h3>Total Owed:</h3></th>
+            
+          </tr>
+          <tr>
+            <td style ='text-align: left; vertical-align: middle'>£{{total}}</td>
+          </tr>
+
+        </table>
+      </div>
+      
+
+{% endblock %}

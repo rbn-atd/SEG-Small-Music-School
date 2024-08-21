@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Music School Management System</title>  
+    </head>
+    <body>
+        <h1>Invoice for this request</h1>
+        <p></p><a href='{% url 'requests_list' %}'>Home</a></p>
+
+        <div class="mb-3">
+            <table>
+                <tr>
+                  <th>Invoice Number</th>
+                  <th>Student</th>
+                  <th>Student Contact</th>
+                  <th>Admin Contact</th>
+                  <th style = "width:5%"> Child </th>
+                  <th style = "width:5%">Cost</th>
+                  <th style = "width:5%">Paid</th>
+                  <th>Invoice Date</th>
+                  <th>Request Date</th>
+                  <th>Availability</th>
+                  <th>Total Lessons</th>
+                  <th>Length</th>
+                  <th style = "width:5%" >Frequency</th>
+                  <th style = "width:5%">Extra</th>
+                  <th>Dates Confirmed</th>
+                </tr>
+
+                  <tr>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.invoice_number}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.user.full_name}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.user}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.accepting_admin}}</td>
+                    <td></td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.cost}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.paid}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.date}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.date}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.availability}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.number_Of_Lessons}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.length}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.interval}}</td>
+                    <td style ='text-align: center; vertical-align: middle'>{{invoice.request.body}}</td>
+                    <td style ='text-align: center; vertical-align: middle'></td>
+                  </tr>
+          </table>  
+    </div>
+    </body>
+</html>

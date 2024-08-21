@@ -1,0 +1,21 @@
+{% extends 'admin_nav.html' %}
+{% block main %}
+    <head>
+        <title>Music School Management System</title>  
+    </head>
+    <body>
+        <div class="container p-5 my-5 border">
+            <h1>Create a new Admin Account:</h1>
+            <div class="mb-3">
+            <form action="{% url 'create_admin'%}" method="post">
+                {% csrf_token %}
+                <!-- generates sign up form object from forms.py -->
+                {{ form.as_p }}           
+                <br />
+                <input type="submit" value="Create a new Admin Account">
+            </form>
+            <a href = "{% url 'admin_home'%}">Cancel </a>
+        </div>
+        </div>
+    </body>
+{% endblock %}

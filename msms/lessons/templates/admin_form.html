@@ -1,0 +1,25 @@
+{%load static %}
+{% block main %}
+<head>
+  <title>Request Form</title>
+</head>
+<!-- Link to CSS file-->
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<head>
+  <meta charset ="UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta http-eqiv="X-UA-Compatible" content="ie=edge">
+  <title>Request Lesson</title>
+</head>
+<body>
+  <div class="container p-5 my-5 border">
+    <h1>Request your lessons</h1>
+    <form method ="POST">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <button type = "submit">Submit</button>
+    </form>
+    <a href = "{% url 'admin_view_requests'%}"> Cancel </a>
+  </div> 
+</body>
+{% endblock %}

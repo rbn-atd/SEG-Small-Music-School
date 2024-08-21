@@ -1,0 +1,39 @@
+{% extends 'nav.html' %}
+{% block main %}
+    <!-- Link to CSS file-->
+    {% load static %}
+    <head>
+        <title>Home</title>
+    </head>
+    <link rel="stylesheet" href="{% static 'student_home.css' %}">
+    <div class="container p-5 my-5 border">
+        <div class= "welcome">
+            <form id='display' method='POST' action=''>
+                {% csrf_token %}
+                <h2>Welcome {{request.user.first_name}} {{request.user.last_name}}  </h2>
+            </form>
+        </div>
+        <div class="row">
+            <div class="column" style="background-color:#aaa;">
+                <!--Link to request form page-->
+                <h2><a href='{% url 'request_form' %}' class="btn btn-dark">Register for Class</a></h2>
+                <p>You can request your lessons here</p>
+            </div>
+            <div class="column" style="background-color:#bbb;">
+
+                <!--Link to edit form page-->
+                <h2><a href='{% url 'requests_list' %}' class="btn btn-dark">Edit Class</a></h2>
+                <p>You can check the status of your requests here</p>
+                <p>You can edit and delete your requests before they are booked</p>
+                <p>If you want to change already booked lessons please contact us, changes aren't guaranteed</p>
+            </div>
+            <div class="column" style="background-color:#ccc;">
+                <!--Link to check transaction page-->
+                <h2><a href='{% url 'your_transactions' %}' class="btn btn-dark">Check Transactions</a></h2>
+                <p>Check your invoices and transactions here</p>
+            </div>
+            <p>Our Contact: musicschool@kcl.ac.uk</p>
+        </div>
+    </div>
+
+{% endblock %} 

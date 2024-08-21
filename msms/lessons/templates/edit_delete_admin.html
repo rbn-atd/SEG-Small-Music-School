@@ -1,0 +1,36 @@
+{% extends 'admin_nav.html' %}
+{% block main %}
+{%load static %}
+  <link rel="stylesheet" href="{% static 'user_request.css' %}">
+    <head>
+        <title>Music School Management System</title>
+    </head>
+    <div class="container p-5 my-5 border">
+    <body>
+        <div class="col">
+            <div class="mb-3">
+                <a class="btn btn-outline-primary" id="back_button" href='{% url 'search_admin' %}'>Back</a>
+            </div>
+        </div>
+        <h1>Admin accounts</h1>
+    <table>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Is Super User</th>
+        </tr>
+        {% for i in admin_users %}
+            <tr>
+            <td style ='text-align: center; vertical-align: middle'>{{i.username}}</td>
+            <td style ='text-align: center; vertical-align: middle'>{{i.first_name}}</td>
+            <td style ='text-align: center; vertical-align: middle'>{{i.last_name}}</td>
+            <td style ='text-align: center; vertical-align: middle'>{{i.is_super_user}}</td>
+            <td><a class = "btn btn-sm btn-info" href="{% url 'edit_admin' %}">Edit</a></td>
+            <td><a class = "btn btn-sm btn-danger" href="{% url 'delete_admin' i.username %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </body>
+</div>
+{% endblock %}

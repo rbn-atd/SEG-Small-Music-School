@@ -1,0 +1,21 @@
+{% extends 'nav.html' %}
+{% block main %}
+    <head>
+        <title>Profile</title>
+    </head>
+    <div class="container p-5 my-5 border">
+        <div class= "welcome">
+            <form id='display' method='POST' action=''>
+                {% csrf_token %}
+                <h2>Your Profile</h2>
+            </form>
+        </div>
+        <div class= "profile">
+            <h>First name: {{request.user.first_name}}</h><br>
+            <h>Last name: {{request.user.last_name}}</h><br>
+            <h>Email: {{request.user.username}}</h><br>
+            <h>ID: {{request.user.id}}</h><br>
+            <h></h>
+        </div>
+    </div>
+{% endblock %}

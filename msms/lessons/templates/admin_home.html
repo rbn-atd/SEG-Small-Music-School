@@ -1,0 +1,38 @@
+{% extends 'admin_nav.html' %}
+{% block main %}
+    <head>
+        <title>Music School Management System</title>
+    </head>
+    <body>
+        <div class="container p-5 my-5 border">
+            <div class="mb-3">
+                <h1>Admin homepage</h1>
+            </div>
+            {% csrf_token %}
+            {%if request.user.is_superuser%}
+            <div class="col">
+                <div class="mb-3">
+                <h6>Admin:</h6>
+                
+                <a class="btn btn-outline-primary" id="create_button" href='{% url 'create_admin' %}'>Create</a>
+                <a class="btn btn-outline-primary" id="edit_button" href='{% url 'search_admin' %}'>Edit</a>
+                <a class="btn btn-outline-primary" id="delete_button" href='{% url 'search_admin' %}'>Delete</a>
+              
+            </div>
+            {%endif%}
+            <div class="col">
+                <div class="mb-3">
+                <h6>Student:</h6>
+                <a class="btn btn-outline-primary" id="student_button" href='{% url 'admin_view_students' %}'>Students</a>         
+                <a class="btn btn-outline-primary" id="request_button" href='{% url 'admin_view_requests' %}'>Requests</a>
+                <a class="btn btn-outline-primary" id="request_button" href='{% url 'incoming_transactions' %}'>Transactions</a>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                <h6>Terms:</h6>
+                <a class="btn btn-outline-primary" href='{% url 'create_term' %}'>Create</a>         
+                <a class="btn btn-outline-primary" href='{% url 'term_list' %}'>Edit</a>
+            </div>
+
+    </body>
+{% endblock %}

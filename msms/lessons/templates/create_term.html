@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Music School Management System</title>  
+    </head>
+    <body>
+        <h1>Create term</h1>
+        <div class="mb-3">
+            <h2> Dates must be in form YYYY-MM-DD</h2>
+            <form method ="POST">
+                {% csrf_token %}
+                {{ form.as_p }}           
+                <br/>
+                <button type = "submit">Submit</button>
+            </form>
+            <a href = "{% url 'admin_home'%}"> Cancel </a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Link to CSS file-->
+    <link rel="stylesheet" href="{% static 'sign.css' %}">
+
+    <head>
+        <title>Sign up</title>
+    </head>
+    <body>
+
+        <h1><center>KCL Music School</center></h1>
+        <h1><center>Sign Up</center></h1>
+        <p><center>Create a new account here</center></p>
+        <form action="{% url 'sign_up'%}" method="post">
+            {% csrf_token %}
+            <!-- generates sign up form object from forms.py -->
+            <div class="container p-5 my-5 border">
+                {{ form.as_p }}
+                <input type="submit" value="Sign up">
+                <p><a href='{% url 'log_in' %}'> Back to Login </a></p>
+            </div>    
+            
+        </form>
+    </body>
+</html>

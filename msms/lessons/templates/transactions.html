@@ -1,0 +1,70 @@
+<!-- A page where the user can see all invoices linked to them -->
+
+{% extends "base.html" %}
+
+{% block title %}Transactions{% endblock %}
+
+{% block content %}
+    <h1>Transactions</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>    
+                <!-- Number, date created, date due, cost, paid? -->
+                <th scope="col">Invoice Reference</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Date Due</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Paid?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- If the user is a student only show invoices for that student Otherwise show all the invoices -->
+            {% if user.is_student%}
+                {% for invoice in invoices %}
+                    {% if invoice.user_id_id == user.id%}
+                        <!-- If it is past the due date of the invoice and it has not been paid then make the row red -->
+                        {% if invoice.date_created < today and invoice.paid == False %}
+                            <tr style="color:red">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                            <td>{{ invoice.invoice_number }}</td>
+                            <td>{{ invoice.date_created }}</td>
+                            <td>{{ invoice.date_due }}</td>
+                            <!-- Format the invoice cost so that it is a currency -->
+                            <td>{{ invoice.cost|floatformat:2 }}</td>
+                            <!-- If the invoice has been paid then show paid otherwise show unpaid -->
+                            {% if invoice.paid == True %}
+                                <td>Paid</td>
+                            {% else %}
+                                <td>Unpaid</td>
+                            {% endif %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for invoice in invoices %}
+                    {% if invoice.date_created < today and invoice.paid == False %}
+                        <tr style="color:red">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                        <td>{{ invoice.invoice_number }}</td>
+                        <!-- From the user id get the user and display their first name last name and user id -->
+                        <td>{{ invoice.user_id.first_name }} {{ invoice.user_id.last_name }} ({{ invoice.user_id_id }})</td>
+                        <td>{{ invoice.date_created }}</td>
+                        <td>{{ invoice.date_due }}</td>
+                        <!-- Format the invoice cost so that it is a currency -->
+                        <td>{{ invoice.cost|floatformat:2 }}</td>
+                        <!-- If the invoice has been paid then show paid otherwise show unpaid -->
+                        {% if invoice.paid == True %}
+                            <td>Paid</td>
+                        {% else %}
+                            <td>Unpaid</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

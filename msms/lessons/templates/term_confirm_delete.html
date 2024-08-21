@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Music School Management System</title>  
+    </head>
+    <body>
+        <div class="container p-5 my-5 border">
+            <h1>Delete Term </h1>
+            <p>Are you sure you want to delete this Term?</p>
+
+            <form method ="POST">
+            {% csrf_token %}
+            <input type= "Submit" name = "Confirm">
+            </form>
+        </div>
+        <a href = "{% url 'term_list'%}"> Cancel </a>
+    </body>
+</html>

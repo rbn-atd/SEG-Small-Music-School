@@ -1,0 +1,76 @@
+{% extends 'nav.html' %}
+{% block main %}
+  {%load static %}
+  <!-- Link to CSS file-->
+  <link rel="stylesheet" href="{% static 'user_request.css' %}">
+    <head>
+        <title>Music Booking</title>
+    </head>
+
+          
+    <div class="container p-5 my-5 border">    
+      <div style="overflow-x:auto;">
+        <h1>User Requests</h1>
+        <table>
+          <tr>
+            <th>Availability</th>
+            <th>Total Lessons</th>
+            <th>Length</th>
+            <th style = "width:15%" >Frequency</th>
+            <th style = "width:23%">Extra</th>
+            <th>Status</th>
+            <th>Date Created</th>
+          </tr>
+          {% for i in pending_requests %}
+            <tr>
+              <td style ='text-align: center; vertical-align: middle'>{{i.availability}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.number_Of_Lessons}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.length}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.interval}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.body}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.status}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.date}}</td>
+              <td><a class = "btn btn-sm btn-info" href="{% url 'update_requests' i.id %}"> Update</a></td>
+              <td><a class = "btn btn-sm btn-danger" href="{% url 'delete_requests' i.id %}"> Delete</a></td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+
+
+      <h1> Booked Lessons </h1>
+        
+      <div style="overflow-x:auto;">
+        <table>
+          <tr>
+            <th>Availability</th>
+            <th>Total Lessons</th>
+            <th>Length</th>
+            <th style = "width:15%" >Frequency</th>
+            <th style = "width:23%">Extra</th>
+            <th>Status</th>
+
+            <th>Starting</th>
+
+          </tr>
+
+          {% for i in accepted_requests %}
+            <tr>
+              <td style ='text-align: center; vertical-align: middle'>{{i.availability}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.number_Of_Lessons}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.length}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.interval}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.body}}</td>
+              <td style ='text-align: center; vertical-align: middle'>{{i.status}}</td>
+              <td style ='text-align: center; vertical-align: middle'></td>
+              <td><a class = "btn btn-sm btn-info" href="{% url 'student_invoices' i.id %}"> Invoice</a></td>
+              <td><a class = "btn btn-sm btn-success" href=#> Transfer </a></td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+    </div>
+
+
+{% endblock %}
+

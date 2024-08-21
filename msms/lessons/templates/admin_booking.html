@@ -1,0 +1,18 @@
+{% extends 'nav.html' %}
+{% block main %}
+    <head>
+        <title>Confirm booking</title>
+    </head>
+    <body>
+        <div class="container p-5 my-5 border">
+            <h1>Confirm booking request </h1>
+            <p>Confirm booking details?</p>
+
+            <form method ="POST">
+            {% csrf_token %}
+            <a href = "{% url 'admin_view_requests'%}"> Cancel </a>
+            <input type= "Submit" name = "Confirm">
+            </form>
+        </div>
+    </body>
+{% endblock %}
